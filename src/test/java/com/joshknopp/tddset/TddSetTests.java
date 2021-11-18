@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Set;
 
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,14 +20,17 @@ public class TddSetTests {
         assertTrue(tddSet instanceof Set);
     }
 
-    @Test
-    void isEmptyShouldReturnTrueIfEmpty() {
-        assertTrue(tddSet.isEmpty());
-    }
-
-    @Test
-    void isEmptyShouldReturnFalseIfNotEmpty() {
-        tddSet.add("foo");
-        assertFalse(tddSet.isEmpty());
+    @Nested
+    class isEmptyShould {
+        @Test
+        void returnTrueIfEmpty() {
+            assertTrue(tddSet.isEmpty());
+        }
+    
+        @Test
+        void returnFalseIfNotEmpty() {
+            tddSet.add("foo");
+            assertFalse(tddSet.isEmpty());
+        }
     }
 }
