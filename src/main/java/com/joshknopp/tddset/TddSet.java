@@ -4,18 +4,22 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
 
+@SuppressWarnings("unchecked")
 public class TddSet<E> implements Set<E> {
+    private E[] members;
+
+    public TddSet() {
+        this.members = (E[]) new Object[]{};
+    }
 
     @Override
     public int size() {
-        // TODO Auto-generated method stub
-        return 0;
+        return members.length;
     }
 
     @Override
     public boolean isEmpty() {
-        // TODO Auto-generated method stub
-        return true;
+        return this.size() == 0;
     }
 
     @Override
