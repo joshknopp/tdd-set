@@ -1,5 +1,6 @@
 package com.joshknopp.tddset;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Set;
@@ -11,7 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 public class TddSetTests {
     @InjectMocks
-    private TddSet tddSet;
+    private TddSet<String> tddSet;
 
     @Test
     void itShouldImplementSetInterface() {
@@ -21,5 +22,11 @@ public class TddSetTests {
     @Test
     void isEmptyShouldReturnTrueIfEmpty() {
         assertTrue(tddSet.isEmpty());
+    }
+
+    @Test
+    void isEmptyShouldReturnFalseIfNotEmpty() {
+        tddSet.add("foo");
+        assertFalse(tddSet.isEmpty());
     }
 }
