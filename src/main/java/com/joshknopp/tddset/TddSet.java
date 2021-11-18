@@ -1,5 +1,6 @@
 package com.joshknopp.tddset;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Set;
@@ -48,8 +49,9 @@ public class TddSet<E> implements Set<E> {
 
     @Override
     public boolean add(E e) {
-        // TODO Auto-generated method stub
-        return false;
+        members = Arrays.copyOf(members, members.length + 1);
+        members[members.length - 1] = e;
+        return true;
     }
 
     @Override
