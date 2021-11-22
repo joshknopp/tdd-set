@@ -25,7 +25,9 @@ public class TddSet<E> implements Set<E> {
 
     @Override
     public boolean contains(Object o) {
-        // TODO Auto-generated method stub
+        for (int i = 0; i < members.length; i++) {
+            if(members[i].equals(o)) return true;
+        }
         return false;
     }
 
@@ -49,6 +51,9 @@ public class TddSet<E> implements Set<E> {
 
     @Override
     public boolean add(E e) {
+        if(this.contains(e)) {
+            return false;
+        }
         members = Arrays.copyOf(members, members.length + 1);
         members[members.length - 1] = e;
         return true;
