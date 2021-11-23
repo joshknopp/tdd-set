@@ -33,6 +33,13 @@ public class TddSetTests {
         }
 
         @Test
+        void returnOneAfterDoubleAdd() {
+            assertTrue(tddSet.add("foo"));
+            assertTrue(tddSet.add("bar"));
+            assertEquals(2, tddSet.size());
+        }
+
+        @Test
         void returnOneAfterDuplicateAdd() {
             assertTrue(tddSet.add("foo"));
             assertFalse(tddSet.add("foo"));
