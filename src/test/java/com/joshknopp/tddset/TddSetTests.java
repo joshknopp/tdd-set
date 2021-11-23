@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -65,6 +66,50 @@ public class TddSetTests {
         void returnFalseIfNotEmpty() {
             tddSet.add("foo");
             assertFalse(tddSet.isEmpty());
+        }
+    }
+
+    @Nested
+    class AddShould {
+        @Test
+        void returnTrueOnSuccessfulAdd() {
+            assertTrue(tddSet.add("foo"));
+        }
+        @Test
+        void returnFalseOnDuplicateAdd() {
+            tddSet.add("foo");
+            assertFalse(tddSet.add("foo"));
+        }
+    }
+
+    @Nested
+    class AddAllShould {
+        @Test
+        void returnTrueOnSuccessfulAddAll() {
+            ArrayList<String> elements = new ArrayList<>();
+            elements.add("foo");
+            elements.add("bar");
+            assertTrue(tddSet.addAll(elements));
+        }
+        @Test
+        void returnFalseOnDuplicateAddAll() {
+            ArrayList<String> elements = new ArrayList<>();
+            elements.add("foo");
+            elements.add("bar");
+            tddSet.addAll(elements);
+            assertFalse(tddSet.addAll(elements));
+        }
+        @Test
+        void resultAddNonOverlappingElements() {
+            ArrayList<String> elements1 = new ArrayList<>();
+            ArrayList<String> elements2 = new ArrayList<>();
+            elements1.add("foo");
+            elements1.add("bar");
+            elements2.add("foo");
+            elements2.add("baz");
+            tddSet.addAll(elements1);
+            tddSet.addAll(elements2);
+            assertEquals(3, tddSet.size());
         }
     }
 }
