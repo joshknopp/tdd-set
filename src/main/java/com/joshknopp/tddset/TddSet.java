@@ -83,8 +83,11 @@ public class TddSet<E> implements Set<E> {
 
     @Override
     public boolean addAll(Collection<? extends E> c) {
-        // TODO Auto-generated method stub
-        return false;
+        boolean result = true;
+        for(E element : c) {
+            result = this.add(element) && result;
+        }
+        return result;
     }
 
     @Override
