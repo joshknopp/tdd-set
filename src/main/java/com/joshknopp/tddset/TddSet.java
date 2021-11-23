@@ -61,8 +61,18 @@ public class TddSet<E> implements Set<E> {
 
     @Override
     public boolean remove(Object o) {
-        // TODO Auto-generated method stub
-        return false;
+        if(!this.contains(o)) {
+            return false;
+        }
+        E[] newArray = (E[]) new Object[members.length - 1];
+        int j = 0;
+        for (int i = 0; i < members.length; i++) {
+            if(!members[i].equals(o)) {
+                newArray[j++] = members[i];
+            }
+        }
+        members = newArray;
+        return true;
     }
 
     @Override
