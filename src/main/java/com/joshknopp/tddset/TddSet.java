@@ -25,8 +25,8 @@ public class TddSet<E> implements Set<E> {
 
     @Override
     public boolean contains(Object o) {
-        for (int i = 0; i < members.length; i++) {
-            if(members[i].equals(o)) return true;
+        for (E member : members) {
+            if (member.equals(o)) return true;
         }
         return false;
     }
@@ -66,9 +66,9 @@ public class TddSet<E> implements Set<E> {
         }
         E[] newArray = (E[]) new Object[members.length - 1];
         int j = 0;
-        for (int i = 0; i < members.length; i++) {
-            if(!members[i].equals(o)) {
-                newArray[j++] = members[i];
+        for (E member : members) {
+            if (!member.equals(o)) {
+                newArray[j++] = member;
             }
         }
         members = newArray;
